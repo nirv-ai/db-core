@@ -1,0 +1,17 @@
+LOAD CSV
+   FROM 'paths_tsv.csv'
+        HAVING FIELDS
+        (
+           name, incentives, disciplines, academia, skills, about, strategy, child_paths [null if blanks]
+        )
+   INTO postgresql://nirvai:nirvai@localhost:5432/nirvai
+        TARGET TABLE nirvai.paths
+        TARGET COLUMNS
+        (
+           name, incentives, disciplines, academia, skills, about, strategy, child_paths
+        )
+   WITH truncate,
+        fields not enclosed,
+        fields terminated by '\t'
+
+    SET work_mem to '32 MB', maintenance_work_mem to '64 MB';
