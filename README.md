@@ -31,6 +31,8 @@
 ```sh
 # grab the conf file from the base image
 docker run -i --rm postgres:15.0 cat /usr/share/postgresql/postgresql.conf.sample > postgresql.conf
+## TODO: still need to move it into /etc/ within the container
+## @see https://hub.docker.com/_/postgres
 
 # setup
 # ^ check the initdb script, which provides sensible defaults
