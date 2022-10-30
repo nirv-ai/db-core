@@ -22,4 +22,9 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
   BEFORE UPDATE ON nirvai.players
   FOR EACH ROW
   EXECUTE FUNCTION set_updated_at();
+
+  CREATE or replace TRIGGER set_updated_at
+  BEFORE UPDATE ON nirvai.actions
+  FOR EACH ROW
+  EXECUTE FUNCTION set_updated_at();
 EOSQL

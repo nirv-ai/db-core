@@ -3,7 +3,7 @@
 set -e
 
 TABLE_NAME=paths
-TABLE_COMMENT='paths are a set of activities, actions, skills'
+TABLE_COMMENT='paths define ovarching ways of life'
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
