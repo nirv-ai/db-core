@@ -7,6 +7,8 @@ TABLE_COMMENT='players are users that have not requested account deletion'
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
+    created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     callsign text PRIMARY KEY,
     email text NOT NULL UNIQUE,
     password text NOT NULL,

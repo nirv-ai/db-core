@@ -7,6 +7,8 @@ TABLE_COMMENT='paths are a set of activities, actions, skills'
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
+    created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     name text PRIMARY KEY,
     about text DEFAULT '',
     incentives text DEFAULT '',

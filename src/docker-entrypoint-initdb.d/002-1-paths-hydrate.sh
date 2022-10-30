@@ -13,8 +13,9 @@ THIS_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 TABLE_DATA_FILE="$THIS_DIR/fixtures/paths.csv"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
-  COPY $TABLE_NAME
+  COPY $TABLE_NAME (name,about,incentives,disciplines,academia,skills,strategy,child_paths,display_name)
   FROM '$TABLE_DATA_FILE'
-  CSV HEADER
+  CSV
+  HEADER
   ;
 EOSQL
