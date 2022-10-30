@@ -10,7 +10,7 @@ set -e
 
 TABLE_NAME=skills
 THIS_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-TABLE_DATA_FILE="$THIS_DIR/fixtures/source-actions.csv"
+TABLE_DATA_FILE="$THIS_DIR/fixtures/source-skills.csv"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   COPY $TABLE_NAME (name)
