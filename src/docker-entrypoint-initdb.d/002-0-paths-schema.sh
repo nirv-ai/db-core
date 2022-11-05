@@ -10,14 +10,14 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     name text PRIMARY KEY,
+    display_name text DEFAULT '',
     about text DEFAULT '',
+    actions text DEFAULT '',
+    skills text DEFAULT '',
     incentives text DEFAULT '',
     disciplines text DEFAULT '',
     academia text DEFAULT '',
-    skills text DEFAULT '',
-    actions text DEFAULT '',
-    child_paths text DEFAULT '',
-    display_name text DEFAULT ''
+    related_paths text DEFAULT ''
   );
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';
@@ -28,7 +28,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
   comment on column $TABLE_NAME.skills is 'set of skills required for for success';
   comment on column $TABLE_NAME.about is 'description of path';
   comment on column $TABLE_NAME.actions is 'what players on this path do';
-  comment on column $TABLE_NAME.child_paths is 'todo: remove this and make it a foreign field';
+  comment on column $TABLE_NAME.related_paths is 'todo: remove this and make it a foreign field';
   comment on column $TABLE_NAME.display_name is 'a secondary name, as we dont allow changing paths.name';
 
 EOSQL
