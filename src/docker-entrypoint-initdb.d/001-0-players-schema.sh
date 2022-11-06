@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+# TODO: need to create player 'nirvai' which owns all default records
+## ^ i.e. you also need to create junction records
 set -e
 
 TABLE_NAME=players
