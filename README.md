@@ -2,7 +2,8 @@
 
 ## todos
 
-- TODO: parse path records and create junction table records
+- TODO: duplicates in actions table
+  - get all action records > replace ',' with 'and', remove dupes, keep the records with ','
 
 ## submodule
 

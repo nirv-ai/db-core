@@ -8,12 +8,12 @@
 
 set -e
 
-TABLE_NAME=actions
+TABLE_NAME=paths_academia
 THIS_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-TABLE_DATA_FILE="$THIS_DIR/fixtures/source-actions.csv"
+TABLE_DATA_FILE="$THIS_DIR/fixtures/source-paths-academia.csv"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
-  COPY $TABLE_NAME (created_at,updated_at,name,display_name)
+  COPY $TABLE_NAME (created_at,academia_name,path_name)
   FROM '$TABLE_DATA_FILE'
   CSV
   HEADER

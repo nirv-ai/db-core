@@ -16,6 +16,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';
 
-  CREATE INDEX players_paths_player_callsign_index on nirvai.players_paths (player_callsign) INCLUDE (path_name);
-  CREATE INDEX players_paths_path_name_index on nirvai.players_paths (path_name) INCLUDE (player_callsign);
+  CREATE INDEX players_paths_player_callsign_index on nirvai.players_paths (player_callsign) INCLUDE (player_callsign);
+  CREATE INDEX players_paths_path_name_index on nirvai.players_paths (path_name) INCLUDE (path_name);
 EOSQL
