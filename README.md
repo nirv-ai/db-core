@@ -2,9 +2,7 @@
 
 ## todos
 
-- push to opensource
-  - upgrade opensource to 15.0 in all relevant files & docs
-  - sync changes in this readme
+- TODO: parse path records and create junction table records
 
 ## submodule
 
