@@ -4,6 +4,11 @@
 
 - TODO: duplicates in actions table
   - get all action records > replace ',' with 'and', remove dupes, keep the records with ','
+- https://pgtune.leopard.in.ua/
+  https://github.com/localstack/localstack
+  https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+  https://github.com/supabase/postgres
+  https://github.com/supabase/postgres/blob/develop/migrations/db/init-scripts/00000000000000-initial-schema.sql
 
 ## submodule
 

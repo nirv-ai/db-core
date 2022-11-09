@@ -14,7 +14,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     email text NOT NULL UNIQUE,
     password text NOT NULL,
     first text DEFAULT '',
-    avatar text DEFAULT '',
+    avatar text DEFAULT 'https://placekitten.com/g/200/200',
     about text DEFAULT '',
     last text DEFAULT ''
   );

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-#@ see https://www.postgresql.org/docs/current/plpgsql-trigger.html
+# @see https://www.postgresql.org/docs/current/plpgsql-trigger.html
+# @see https://github.com/plv8/plv8/blob/r3.1/docs/FUNCTIONS.md
+# @see https://github.com/plv8/plv8/blob/r3.1/doc/plv8.md
 
 set -e
 
