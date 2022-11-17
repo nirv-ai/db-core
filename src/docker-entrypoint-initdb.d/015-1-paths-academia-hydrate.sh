@@ -8,9 +8,9 @@
 
 set -e
 
-TABLE_NAME=paths_academia
+TABLE_NAME=paths_academias
 THIS_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-TABLE_DATA_FILE="$THIS_DIR/fixtures/source-paths-academia.csv"
+TABLE_DATA_FILE="$THIS_DIR/fixtures/source-paths-academias.csv"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   COPY $TABLE_NAME (created_at,academia_name,path_name)

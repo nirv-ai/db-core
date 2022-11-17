@@ -2,7 +2,7 @@
 
 set -e
 
-TABLE_NAME=academia
+TABLE_NAME=academias
 TABLE_COMMENT='recommended level of education before embarking on path'
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL

@@ -1,4 +1,4 @@
-created_at,path_x_name,path_y_name
+created_at,path_name,path_name_related
 '2022-11-05 21:28:04.421',"financial analysts","portfolio managers"
 '2022-11-05 21:28:04.421',"financial analysts","fund managers"
 '2022-11-05 21:28:04.421',"financial analysts","ratings analysts"
