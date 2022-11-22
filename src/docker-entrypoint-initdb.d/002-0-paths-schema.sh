@@ -10,9 +10,9 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     about text DEFAULT '',
-    created_by text DEFAULT 'nirvai',
+    created_by text DEFAULT 'nirvai' collate anymatch,
     display_name text DEFAULT '',
-    name text PRIMARY KEY
+    name text PRIMARY KEY collate anymatch
   );
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';

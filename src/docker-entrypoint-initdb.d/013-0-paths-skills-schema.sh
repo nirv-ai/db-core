@@ -8,8 +8,8 @@ TABLE_COMMENT='junction table between paths and skills'
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
-    skill_name TEXT REFERENCES nirvai.skills (name) ON UPDATE CASCADE ON DELETE CASCADE,
-    path_name TEXT REFERENCES nirvai.paths (name) ON UPDATE CASCADE ON DELETE CASCADE,
+    skill_name TEXT REFERENCES nirvai.skills (name) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
+    path_name TEXT REFERENCES nirvai.paths (name) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
 
     CONSTRAINT paths_skills_pkey PRIMARY KEY (skill_name, path_name)
   );

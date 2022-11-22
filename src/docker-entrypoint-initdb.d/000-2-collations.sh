@@ -2,6 +2,7 @@
 
 set -e
 
+# @see https://www.postgresql.org/docs/current/sql-createcollation.html
 # @see https://www.postgresql.org/docs/current/collation.html#COLLATION-NONDETERMINISTIC
 # @see https://postgresql.verite.pro/blog/2019/10/14/nondeterministic-collations.html
 
