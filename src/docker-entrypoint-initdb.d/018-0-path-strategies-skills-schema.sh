@@ -10,7 +10,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     path_name TEXT references nirvai.paths (name) on UPDATE CASCADE ON DELETE CASCADE,
     skill_name TEXT REFERENCES nirvai.skills (name) ON UPDATE CASCADE ON DELETE CASCADE,
-    strategy_name TEXT references nirvai.strategies (name) on UPDATE CASCADE ON DELETE CASCADE,
+    strategy_name TEXT references nirvai.paths_strategies (name) on UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT paths_strategies_skills_pkey PRIMARY KEY (path_name, strategy_name, skill_name)
   );
 

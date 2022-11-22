@@ -2,7 +2,7 @@
 
 set -e
 
-TABLE_NAME=strategies
+TABLE_NAME=paths_strategies
 TABLE_COMMENT='strategies enable players to customize paths'
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
@@ -12,9 +12,9 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     about text DEFAULT '',
     name text NOT NULL UNIQUE,
     created_by text references players(callsign),
-    path text references paths(name),
+    path_name text references paths(name),
     display_name text DEFAULT '',
-    UNIQUE (name, path)
+    UNIQUE (name, path_name)
   );
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';
