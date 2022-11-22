@@ -10,7 +10,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     about text DEFAULT '',
-    name text NOT NULL,
+    name text NOT NULL UNIQUE,
     created_by text references players(callsign),
     path text references paths(name),
     display_name text DEFAULT '',
