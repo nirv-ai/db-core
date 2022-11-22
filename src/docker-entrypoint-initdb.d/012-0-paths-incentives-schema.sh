@@ -10,7 +10,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     incentive_name TEXT REFERENCES nirvai.incentives (name) ON UPDATE CASCADE ON DELETE CASCADE,
     path_name TEXT REFERENCES nirvai.paths (name) ON UPDATE CASCADE ON DELETE CASCADE,
-
     CONSTRAINT paths_incentives_pkey PRIMARY KEY (incentive_name, path_name)
   );
 
