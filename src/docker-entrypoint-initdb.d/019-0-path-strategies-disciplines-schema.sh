@@ -9,8 +9,8 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     path_name TEXT references nirvai.paths (name) on UPDATE CASCADE ON DELETE CASCADE collate anymatch,
+    strategy_name TEXT NOT NULL collate anymatch,
     discipline_name TEXT REFERENCES nirvai.disciplines (name) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
-    strategy_name TEXT references nirvai.paths_strategies (name) on UPDATE CASCADE ON DELETE CASCADE collate anymatch,
     CONSTRAINT paths_strategies_disciplines_pkey PRIMARY KEY (path_name, strategy_name, discipline_name)
   );
 
@@ -18,5 +18,5 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
 
   CREATE INDEX paths_strategies_disciplines_discipline_name_index on nirvai.paths_strategies_disciplines (discipline_name) INCLUDE (discipline_name);
   CREATE INDEX paths_strategies_disciplines_path_name_index on nirvai.paths_strategies_disciplines (path_name) INCLUDE (path_name);
-  CREATE INDEX paths_strategies_disciplines_strategy_name_index on nirvai.paths_strategies_disciplines (path_name) INCLUDE (strategy_name);
+  CREATE INDEX paths_strategies_disciplines_strategy_name_index on nirvai.paths_strategies_disciplines (strategy_name) INCLUDE (strategy_name);
 EOSQL
