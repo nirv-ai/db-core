@@ -3,7 +3,9 @@
 ## todos
 
 - TODO: duplicates in actions table
-  - get all action records > replace ',' with 'and', remove dupes, keep the records with ','
+  - process all record names
+    - replace ',' with 'and', remove dupes, keep the records with ','
+    - dont allow `-` in ANY object names, or ANY non alphanumeric string
 - https://pgtune.leopard.in.ua/
   https://github.com/localstack/localstack
   https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
