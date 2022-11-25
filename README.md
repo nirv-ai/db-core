@@ -1,16 +1,8 @@
 # db-core
 
-## todos
+- [NIRVAI racexp](https://github.com/orgs/nirv-ai/projects/6)
 
-- TODO: duplicates in actions table
-  - process all record names
-    - replace ',' with 'and', remove dupes, keep the records with ','
-    - dont allow `-` in ANY object names, or ANY non alphanumeric string
-- https://pgtune.leopard.in.ua/
-  https://github.com/localstack/localstack
-  https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-  https://github.com/supabase/postgres
-  https://github.com/supabase/postgres/blob/develop/migrations/db/init-scripts/00000000000000-initial-schema.sql
+## todos
 
 ## submodule
 
@@ -37,7 +29,6 @@
 ```sh
 # grab the conf file from the base image
 docker run -i --rm postgres:15.0 cat /usr/share/postgresql/postgresql.conf.sample > postgresql.conf
-## TODO: still need to move it into /etc/ within the container
 ## @see https://hub.docker.com/_/postgres
 
 # setup
