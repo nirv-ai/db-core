@@ -2,7 +2,12 @@
 
 - [NIRVAI racexp](https://github.com/orgs/nirv-ai/projects/6)
 
-## todos
+## handa vscode find replace
+
+- replace - in strings with spaces without removing the preceding char
+  - ([A-Za-z])-
+  - $1
+    - $1 contains a space after it
 
 ## submodule
 
