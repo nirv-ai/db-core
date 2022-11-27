@@ -9,7 +9,17 @@
   - $1
     - $1 contains a space after it
 
-## SQL
+## POSTGRES
+
+- [aws on postgres views](https://docs.aws.amazon.com/dms/latest/sql-server-to-aurora-postgresql-migration-playbook/chap-sql-server-aurora-pg.storage.materializedviews.html)
+
+### views vs materialized views
+
+- VIEWS do not add to performance, but they will use the underlying table indexes
+  - you cant create indexes on postgres views, so ensure the query is optimized
+  - use MATERIALIZED views if performance enhancements are required
+
+### SQL
 
 ```sql
 -- get COST and TIME of executing a query
