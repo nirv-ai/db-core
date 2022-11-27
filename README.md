@@ -2,12 +2,20 @@
 
 - [NIRVAI racexp](https://github.com/orgs/nirv-ai/projects/6)
 
-## handa vscode find replace
+## handy vscode find replace
 
 - replace - in strings with spaces without removing the preceding char
   - ([A-Za-z])-
   - $1
     - $1 contains a space after it
+
+## SQL
+
+```sql
+-- get COST and TIME of executing a query
+-- lower cost is better, who woulda thought
+EXPLAIN ANALYZE SELECT * FROM medley LIMIT 100;
+```
 
 ## submodule
 
