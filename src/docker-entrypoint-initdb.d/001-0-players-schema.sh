@@ -13,10 +13,10 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
     callsign text PRIMARY KEY collate anymatch,
     email text NOT NULL UNIQUE collate anymatch,
     password text NOT NULL,
-    first text DEFAULT '',
+    first text DEFAULT '' collate anymatch,
     avatar text DEFAULT 'https://placekitten.com/g/200/200',
-    about text DEFAULT '',
-    last text DEFAULT ''
+    about text DEFAULT '' collate anymatch,
+    last text DEFAULT '' collate anymatch
   );
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';

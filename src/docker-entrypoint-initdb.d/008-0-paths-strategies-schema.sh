@@ -9,11 +9,11 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
-    about text DEFAULT '',
+    about text DEFAULT '' collate anymatch,
     name text NOT NULL collate anymatch,
     created_by text references players(callsign) collate anymatch,
     path_name text references paths(name) collate anymatch,
-    display_name text DEFAULT '',
+    display_name text DEFAULT '' collate anymatch,
     UNIQUE (name, path_name)
   );
 

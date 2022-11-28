@@ -9,10 +9,10 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EO
   CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
-    about text DEFAULT '',
+    about text DEFAULT '' collate anymatch,
     name text PRIMARY KEY collate anymatch,
     created_by text DEFAULT 'nirvai' collate anymatch,
-    display_name text DEFAULT ''
+    display_name text DEFAULT '' collate anymatch
   );
 
   comment on table $TABLE_NAME is '$TABLE_COMMENT';
