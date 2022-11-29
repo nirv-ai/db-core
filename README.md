@@ -11,6 +11,8 @@
 
 ## POSTGRES
 
+- [using pgaudit for hiding sensitive info](https://scalegrid.io/blog/auditing-postgresql-using-pgaudit/)
+- [postgres logging passwords](https://dba.stackexchange.com/questions/94625/how-do-i-hide-sensitive-information-like-plaintext-passwords-from-the-logs)
 - [aws on postgres views](https://docs.aws.amazon.com/dms/latest/sql-server-to-aurora-postgresql-migration-playbook/chap-sql-server-aurora-pg.storage.materializedviews.html)
 
 ### views vs materialized views
