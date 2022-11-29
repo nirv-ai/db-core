@@ -17,6 +17,7 @@ RUN set -ex && \
   [ "$postgresHome" = '/var/lib/postgresql' ] && \
   mkdir -p "$postgresHome" && \
   chown -R postgres:postgres "$postgresHome"
+
 # always use nocache option, runs apk update and rm -rf /var/cache/apk/*
 # @see https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk
 RUN set -ex; \
@@ -32,22 +33,20 @@ RUN set -ex; \
   libedit-dev \
   libxml2-dev \
   libxslt-dev \
+  krb5-dev \
+  krb5 \
   make \
   openssl \
   openssl-dev \
   perl \
-  postgresql-pglogical \
   tar \
   tzdata \
   util-linux-dev \
+  su-exec \
   zlib-dev
 
-# @see https://github.com/2ndQuadrant/pglogical
-ENV pg_audit_version=1.7.0
-ENV pg_audit_tar_url=https://github.com/pgaudit/pgaudit/archive/${pg_audit_version}.tar.gz
 
-
-
-RUN set -ex && \
-  bash -c 'mkdir -p /tmp/pgaudit' && \
-    cd /tmp/pgaudit && curl -L ${pg_audit_tar_url} | tar xz --strip 1
+EXPOSE 5432
+COPY postgresql.conf /etc/postgresql/postgresql.conf
+COPY docker-entrypoint-initdb.d/ docker-entrypoint-initdb.d/
+USER postgres
