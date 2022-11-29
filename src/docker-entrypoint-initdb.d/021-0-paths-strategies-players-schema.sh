@@ -4,9 +4,11 @@ set -e
 
 TABLE_NAME=paths_strategies_players
 TABLE_COMMENT='junction table between paths, players and strategies'
+USE_SCHEMA="${USE_SCHEMA:-$DEFAULT_DB}"
+USE_DB="${USE_DB:-$DEFAULT_DB}"
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
-  CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_DB" <<-EOSQL
+  CREATE TABLE IF NOT EXISTS $USE_SCHEMA.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     player_callsign TEXT REFERENCES nirvai.players (callsign) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
     strategy_name TEXT NOT NULL collate anymatch,

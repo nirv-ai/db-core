@@ -8,10 +8,13 @@ set -e
 
 ## on linux: `locale -a` to see available locales
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
+USE_SCHEMA="${USE_SCHEMA:-$DEFAULT_DB}"
+USE_DB="${USE_DB:-$DEFAULT_DB}"
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_DB" <<-EOSQL
   -- can be used across all locales & regions
   -- primary ignores accents & case
-  CREATE COLLATION IF NOT EXISTS anymatch (
+  CREATE COLLATION IF NOT EXISTS $USE_SCHEMA.anymatch (
     provider = icu,
     locale = '@colStrength=primary',
     deterministic = false

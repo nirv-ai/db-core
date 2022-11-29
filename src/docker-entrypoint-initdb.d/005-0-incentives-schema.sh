@@ -4,9 +4,11 @@ set -e
 
 TABLE_NAME=incentives
 TABLE_COMMENT='incentives are motivations for joining a path'
+USE_SCHEMA="${USE_SCHEMA:-$DEFAULT_DB}"
+USE_DB="${USE_DB:-$DEFAULT_DB}"
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
-  CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_dB" <<-EOSQL
+  CREATE TABLE IF NOT EXISTS $USE_SCHEMA.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     name text PRIMARY KEY collate anymatch,

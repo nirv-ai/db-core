@@ -4,9 +4,11 @@ set -e
 
 TABLE_NAME=paths_disciplines
 TABLE_COMMENT='junction table between paths and disciplines'
+USE_SCHEMA="${USE_SCHEMA:-$DEFAULT_DB}"
+USE_DB="${USE_DB:-$DEFAULT_DB}"
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$DEFAULT_DB" <<-EOSQL
-  CREATE TABLE IF NOT EXISTS $DEFAULT_DB.$TABLE_NAME (
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_DB" <<-EOSQL
+  CREATE TABLE IF NOT EXISTS $USE_SCHEMA.$TABLE_NAME (
     created_at TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,
     discipline_name TEXT REFERENCES nirvai.disciplines (name) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
     path_name TEXT REFERENCES nirvai.paths (name) ON UPDATE CASCADE ON DELETE CASCADE collate anymatch,
