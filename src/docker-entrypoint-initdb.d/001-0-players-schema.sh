@@ -7,6 +7,10 @@ TABLE_NAME=players
 TABLE_COMMENT='players are users that have not requested account deletion'
 USE_SCHEMA="${USE_SCHEMA:-$DEFAULT_DB}"
 USE_DB="${USE_DB:-$DEFAULT_DB}"
+A_SEARCH_COL='callsign_search'
+A_SEARCH_COL_SOURCE="callsign"
+B_SEARCH_COL='about_search'
+B_SEARCH_COL_SOURCE="about"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_DB" <<-EOSQL
   CREATE TABLE IF NOT EXISTS $USE_SCHEMA.$TABLE_NAME (
@@ -18,9 +22,14 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$USE_DB" <<-EOSQL
     first text DEFAULT '' collate anymatch,
     avatar text DEFAULT 'https://placekitten.com/g/200/200',
     about text DEFAULT '' collate anymatch,
-    last text DEFAULT '' collate anymatch
+    last text DEFAULT '' collate anymatch,
+    display_name text DEFAULT '' collate anymatch,
+    $A_SEARCH_COL tsvector GENERATED ALWAYS AS (to_tsvector('english', coalesce($A_SEARCH_COL_SOURCE, ''))) STORED,
+    $B_SEARCH_COL tsvector GENERATED ALWAYS AS (to_tsvector('english', coalesce($B_SEARCH_COL_SOURCE, ''))) STORED
   );
 
+  CREATE INDEX ${TABLE_NAME}_${A_SEARCH_COL}_index ON $TABLE_NAME USING GIN ($A_SEARCH_COL);
+  CREATE INDEX ${TABLE_NAME}_${B_SEARCH_COL}_index  ON $TABLE_NAME USING GIN ($B_SEARCH_COL);
   comment on table $TABLE_NAME is '$TABLE_COMMENT';
   comment on column $TABLE_NAME.callsign is 'players name';
   comment on column $TABLE_NAME.email is 'players email';
