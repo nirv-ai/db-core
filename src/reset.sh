@@ -10,6 +10,6 @@ docker container prune
 docker volume rm $VOLUME_NAME
 docker volume create $VOLUME_NAME
 
-docker compose build
+docker compose build --progress=plain
 
 docker compose up

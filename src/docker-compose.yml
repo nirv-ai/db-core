@@ -4,7 +4,7 @@ services:
     env_file: ./.env
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: postgres.Dockerfile
     # u cannot scale a service beyond 1 container
     # if supplying a static container name
     container_name: nirvai-db-core
